@@ -34,9 +34,10 @@ jobs:
           context: .
           # Note: tags has to be all lower-case
           tags: |
-            kociolek/real-esrgan:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/real-esrgan:latest
           # build on feature branches, push only on main branch
           # push: ${{ github.ref == 'refs/heads/main' }}
+          push: true
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
