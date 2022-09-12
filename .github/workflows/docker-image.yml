@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "master", "test" ]
+    branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 
@@ -36,8 +36,7 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/real-esrgan:latest
           # build on feature branches, push only on main branch
-          # push: ${{ github.ref == 'refs/heads/main' }}
-          push: true
+          push: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
