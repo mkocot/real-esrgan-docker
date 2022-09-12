@@ -12,9 +12,9 @@ RUN python -m venv ${VIRTUAL_ENV}
 #RUN pip3 install -r Real-ESRGAN/requirements.txt
 WORKDIR /build/Real-ESRGAN
 RUN sed -i 's/opencv-python/&-headless/' requirements.txt
-RUN wget https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth -P experiments/pretrained_models
-RUN wget https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.2.3/RealESRGAN_x4plus_netD.pth -P experiments/pretrained_models
-RUN wget https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_Resnet50_Final.pth -P experiments/pretrained_models
+RUN wget --no-verbose https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth -P experiments/pretrained_models
+RUN wget --no-verbose https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.2.3/RealESRGAN_x4plus_netD.pth -P experiments/pretrained_models
+RUN wget --no-verbose https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_Resnet50_Final.pth -P experiments/pretrained_models
 RUN pip install -r requirements.txt
 RUN python setup.py install
 RUN yes | pip uninstall opencv-python
